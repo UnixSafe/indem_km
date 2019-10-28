@@ -161,6 +161,7 @@ def autofill(driver,dateIndem_str,tr):
     #KM
     info(" add km")
     kmInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[8]/input")
+    time.sleep(0.5)
     addObj(kmInput,nbKm,driver)
     
     #addAll
@@ -178,15 +179,17 @@ def addElements(driver):
     tr=2
     for i in range(debut,int(lastDayOfMonth)+1):
         nextDate = date(2019,10,debut)
+        weekno = nextDate.weekday()
         dateIndem_str = nextDate.strftime("%d/%m/%Y")
         print(dateIndem_str)
         if weekno<5:
             info("Weekday" + dateIndem_str)
             autofill(driver,dateIndem_str,tr)
+            tr=tr+1
         else:
             info("Weekend" + dateIndem_str)
         debut=debut+1
-        tr=tr+1
+       
     info("sortie de boucle")
     info(dateIndem_str)
     time.sleep(4)
