@@ -24,6 +24,12 @@ login = data_conf['login']
 password = data_conf['password']
 path = data_conf['DefaultPath']
 indemKmMenu = data_conf['indemKmMenu']
+villeD = data_conf['VilleD']
+villeA = data_conf['VilleA']
+client = data_conf['Client']
+obj = data_conf['OBJ']
+nbKm = data_conf['KM']
+
 
 
 
@@ -58,10 +64,10 @@ def loginIntranet(driver):
         return driver
     else:
         info("enter my login info to connect")
-        driver.implicitly_wait(3000)
+        driver.implicitly_wait(10)
         login_element = driver.find_element_by_name('login')
         login_element.send_keys(login)
-        driver.implicitly_wait(30)
+        driver.implicitly_wait(10)
         passwd = driver.find_element_by_name('pwd')
         encode_passws = base64ToString(password)
         passwd.send_keys(encode_passws)
@@ -71,8 +77,27 @@ def loginIntranet(driver):
         logging.info("Login OK")
         return driver   
 
+def addDate(obj,dateIndem_str):
+    info("start addDate")
+    obj.send_keys(" ")
+    obj.send_keys(Keys.CONTROL,'a')
+    obj.send_keys(dateIndem_str)
+    obj.send_keys(Keys.TAB)
+    info("end addDate")
+def addKm(obj,nb):
+    info("start addKm")
+    obj.send_keys(" ")
+    obj.send_keys(Keys.CONTROL,'a')
+    obj.send_keys(nb)
+    info("end addKm")
 
-
+def addObj(obj,element_str,driver):
+    info("addObj " + element_str)
+    obj.send_keys(" ")
+    obj.send_keys(Keys.CONTROL,'a')
+    obj.send_keys(element_str)
+    #driver.find_element_by_class_name("item item-selected").click()
+    obj.send_keys(Keys.TAB)
 
 def stringToBase64(s):
     return base64.b64encode(s.encode('utf-8'))
@@ -85,6 +110,7 @@ def base64ToString(b):
 def openIntracens():
     driver = openWebBrowers("https://intranet.acensi.fr")
     driver = loginIntranet(driver)
+    driver.implicitly_wait(10)
     print("go to the indem km menu")
     logging.info(" go to the indem km menu")
     indemMenuToClic = driver.find_element_by_id("MES_INDEMNITES_KILOMETRIQUES")
@@ -98,23 +124,74 @@ def processing(driver):
     btnCree = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[3]/td/button")
     btnCree.click()
     info('click sur créer une nouvelle ...')
+    return driver
+
+
+def autofill(driver,dateIndem_str,tr):
+      #Date
+    info("add date")
+    dateInput = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[1]/input")
+    addDate(dateInput,dateIndem_str)
+    time.sleep(1)
+    #VilleD
+    info("add villeD")
+    villeDInpute = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[2]/input")
+   # villeDInpute.send_keys(villeD)
+    addObj(villeDInpute,villeD,driver)
+    #VilleA
+    info("add villeA")
+    villeAInpute = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[3]/input")
+   # villeAInpute.send_keys(villeA)
+    addObj(villeAInpute,villeA,driver)
+    #client
+    info("add client")
+    clientInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[4]/input")
+   # clientInput.send_keys(client)
+    addObj(clientInput,client,driver)
+    #objet
+    info(" add obj")
+    objInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[5]/input")
+    #objInput.send_keys(nbKm)
+    addObj(objInput,obj,driver)
+    
+    #check
+    info("checkbox")
+    checkBox=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[7]/span/input").click()
+    
+    #KM
+    info(" add km")
+    kmInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[8]/input")
+    addObj(kmInput,nbKm,driver)
+    
+    #addAll
+   # info(" add all")
+   # submitbtn=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td[10]/button").click()
+    #time.sleep(60)
+    #add villeD
+
+
+def addElements(driver):
     debut = 1
     nextDate = date(2019,10,debut)
     dateIndem_str = nextDate.strftime("%d/%m/%Y")
     lastDayOfMonth = last_day_of_month(nextDate).strftime("%d")
+    tr=2
     for i in range(debut,int(lastDayOfMonth)+1):
-        info("dans la boucle")
         nextDate = date(2019,10,debut)
         dateIndem_str = nextDate.strftime("%d/%m/%Y")
         print(dateIndem_str)
-        driver.implicitly_wait(3000)
+        if weekno<5:
+            info("Weekday" + dateIndem_str)
+            autofill(driver,dateIndem_str,tr)
+        else:
+            info("Weekend" + dateIndem_str)
         debut=debut+1
+        tr=tr+1
     info("sortie de boucle")
     info(dateIndem_str)
-    dateInput = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td[1]/input")
-    dateInput.send_keys(dateIndem_str)
-    time.sleep(60)
-    #Créer une nouvelle indemnité kilométrique
+    time.sleep(4)
+    
+
     info("end processing function")
     return 0
 
@@ -129,7 +206,8 @@ def main(argv):
         format='%(asctime)s -- %(name)s -- %(levelname)s -- %(message)s')
     logging.info('Started')
     driver=openIntracens()
-    processing(driver)
+    driver=processing(driver)
+    addElements(driver)
     logging.info('Finished')
 
 
