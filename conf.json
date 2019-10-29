@@ -4,6 +4,12 @@
     "indemKmMenu" : "/html/body/table/tbody/tr[2]/td[1]/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div/div",
     "MP" : "/html/body/div/div/div/div[2]/div[2]/div[2]/table/tr[3]/td[6]",
     "ProfileGoogle" : "C:\\Users\\Administrateur\\AppData\\Local\\Google\\Chrome\\User Data",
-    "DefaultPath" : "C:\\Users\\Administrateur\\Documents\\personnel\\indem_km"
+    "DefaultPath" : "C:\\Users\\Administrateur\\Documents\\personnel\\indem_km",
+    "VilleD": "WATTIGNIES (59139)",
+    "VilleA": "VILLENEUVE-D'ASCQ (59491)",
+    "Client": "Auchan Retail",
+    "OBJ":"trajet journalier",
+    "KM":"6"
+
 
 }

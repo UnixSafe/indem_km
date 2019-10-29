@@ -2,7 +2,7 @@
 # 09/2019
 
 
-import glob,os,datetime,logging,subprocess,time,zipfile,base64,json
+import glob,os,datetime,logging,subprocess,time,base64,json
 import array as arr 
 from datetime import timedelta,datetime,date
 from selenium import webdriver
