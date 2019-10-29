@@ -38,3 +38,34 @@ $ python get-pip.py
 ```sh
  pip install -U selenium
 ```
+
+
+## ChromeDriver
+Dowload Chrome Driver
+Copy the.exe into the same folder as the.exe of google Chrome
+
+## conf.json
+````json
+{
+    "login" : "YoutLogin",
+    "password" : "YourPassWdinBase64",
+    "indemKmMenu" : "/html/body/table/tbody/tr[2]/td[1]/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div/div",
+    "ProfileGoogle" : "C:\\Users\\[YOUR USER NAME ]\\AppData\\Local\\Google\\Chrome\\User Data",
+    "DefaultPath" : "THE PATH TO \\ indem_km",
+    "VilleD": "WATTIGNIES (59139)",
+    "VilleA": "VILLENEUVE-D'ASCQ (59491)",
+    "Client": "Auchan Retail",
+    "OBJ":"trajet journalier",
+    "KM":"6"
+}
+`````
+
+- password : mot de passe en base64
+- indemKmMenu : config externalisé si le menu de l'intranet change (NE PAS TOUCHER)
+- ProfileGoogle : le path de votre profil google en local ATTENTION TOUJOURS METTRE DEUX  '\\\\' 
+- DefaultPath : le path d'éxécution du programme 
+- VilleD  : Ville de départ
+- VilleA : Ville d'arrivée
+- OBJ : Objet du trajet
+- KM : Nombre de kilomètre 
+ 
