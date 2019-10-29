@@ -68,4 +68,9 @@ Copy the.exe into the same folder as the.exe of google Chrome
 - VilleA : Ville d'arrivée
 - OBJ : Objet du trajet
 - KM : Nombre de kilomètre 
- 
+
+# Run
+
+```sh
+python main.py
+````
