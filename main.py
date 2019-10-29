@@ -15,8 +15,7 @@ import getopt,sys
 
 #Chrome Path
 CHROME = os.path.join('C:\\', 'Program Files (x86)', 'Google', 'Chrome', 'Application', 'chromedriver.exe')
-#Task Path
-#TASK = os.path.join('C:\\', 'Users', 'Administrateur', 'Desktop','test_biotymel.exe')
+
 with open('conf.json') as config_file:
     data_conf = json.load(config_file)
 
