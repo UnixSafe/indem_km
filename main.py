@@ -15,8 +15,7 @@ import getopt,sys
 
 #Chrome Path
 CHROME = os.path.join('C:\\', 'Program Files (x86)', 'Google', 'Chrome', 'Application', 'chromedriver.exe')
-#Task Path
-#TASK = os.path.join('C:\\', 'Users', 'Administrateur', 'Desktop','test_biotymel.exe')
+
 with open('conf.json') as config_file:
     data_conf = json.load(config_file)
 
@@ -48,12 +47,12 @@ def info(text):
     logging.info(text)
 
 def openWebBrowers(url):
-    os.system('taskkill /im chrome.exe')
+  #  os.system('taskkill /im chrome.exe')
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    profileGoogle=data_conf['ProfileGoogle']
-    options.add_argument("user-data-dir="+profileGoogle)
-    driver = webdriver.Chrome(CHROME,options=options)
+  #  profileGoogle=data_conf['ProfileGoogle']
+   # options.add_argument("user-data-dir="+profileGoogle)
+    driver = webdriver.Chrome(CHROME)
     driver.get(url)
     return driver
 
