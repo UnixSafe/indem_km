@@ -74,3 +74,6 @@ Copy the.exe into the same folder as the.exe of google Chrome
 ```sh
 python main.py
 ````
+# Attention 
+
+Le programme va fermer sans vous prévenir les instances de chrome 
