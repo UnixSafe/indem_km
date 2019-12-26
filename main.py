@@ -28,6 +28,7 @@ villeA = data_conf['VilleA']
 client = data_conf['Client']
 obj = data_conf['OBJ']
 nbKm = data_conf['KM']
+mois = data_conf['MOIS']
 
 
 
@@ -131,7 +132,7 @@ def autofill(driver,dateIndem_str,tr):
     info("add date")
     dateInput = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[1]/input")
     addDate(dateInput,dateIndem_str)
-    time.sleep(1)
+    time.sleep(0.5)
     #VilleD
     info("add villeD")
     villeDInpute = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[2]/input")
@@ -171,13 +172,13 @@ def autofill(driver,dateIndem_str,tr):
 
 
 def addElements(driver):
-    debut = 1
-    nextDate = date(2019,10,debut)
+    debut = 4
+    nextDate = date(2019,int(mois),debut)
     dateIndem_str = nextDate.strftime("%d/%m/%Y")
     lastDayOfMonth = last_day_of_month(nextDate).strftime("%d")
     tr=2
     for i in range(debut,int(lastDayOfMonth)+1):
-        nextDate = date(2019,10,debut)
+        nextDate = date(2019,int(mois),debut)
         weekno = nextDate.weekday()
         dateIndem_str = nextDate.strftime("%d/%m/%Y")
         print(dateIndem_str)
