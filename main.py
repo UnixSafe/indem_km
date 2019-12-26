@@ -172,7 +172,7 @@ def autofill(driver,dateIndem_str,tr):
 
 
 def addElements(driver):
-    debut = 4
+    debut = 1
     nextDate = date(2019,int(mois),debut)
     dateIndem_str = nextDate.strftime("%d/%m/%Y")
     lastDayOfMonth = last_day_of_month(nextDate).strftime("%d")
