@@ -77,3 +77,8 @@ python main.py
 # Attention 
 
 Le programme va fermer sans vous prévenir les instances de chrome 
+
+# Bug 
+
+Il est possible que le programme crash avec un message d'erreur qui indique un problème de version de Chrome.
+Il faut simplement mettre à jour ChromeDriver.

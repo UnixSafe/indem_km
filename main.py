@@ -1,6 +1,6 @@
 #Created by Jérémy Fievet
 # 09/2019
-
+# v1.0
 
 import glob,os,datetime,logging,subprocess,time,base64,json
 import array as arr 
