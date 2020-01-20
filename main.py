@@ -1,6 +1,6 @@
 #Created by Jérémy Fievet
 # 09/2019
-# v1.0
+# v1.5
 
 import glob,os,datetime,logging,subprocess,time,base64,json
 import array as arr 
@@ -173,12 +173,12 @@ def autofill(driver,dateIndem_str,tr):
 
 def addElements(driver):
     debut = 1
-    nextDate = date(2019,int(mois),debut)
+    nextDate = date(2020,int(mois),debut)
     dateIndem_str = nextDate.strftime("%d/%m/%Y")
     lastDayOfMonth = last_day_of_month(nextDate).strftime("%d")
     tr=2
     for i in range(debut,int(lastDayOfMonth)+1):
-        nextDate = date(2019,int(mois),debut)
+        nextDate = date(2020,int(mois),debut)
         weekno = nextDate.weekday()
         dateIndem_str = nextDate.strftime("%d/%m/%Y")
         print(dateIndem_str)
