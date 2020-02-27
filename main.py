@@ -153,6 +153,10 @@ def autofill(driver,dateIndem_str,tr):
     objInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[5]/input")
     #objInput.send_keys(nbKm)
     addObj(objInput,obj,driver)
+
+    #Projet
+    #info("projet select")
+    #objInput=driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[6]/select/option[2]").click()
     
     #check
     info("checkbox")

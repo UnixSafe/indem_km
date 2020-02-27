@@ -67,7 +67,8 @@ Copy the.exe into the same folder as the.exe of google Chrome
 - VilleD  : Ville de départ
 - VilleA : Ville d'arrivée
 - OBJ : Objet du trajet
-- KM : Nombre de kilomètre 
+- KM : Nombre de kilomètre
+- MOIS: Numéro du mois
 
 # Run
 
