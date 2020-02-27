@@ -1,5 +1,4 @@
 
 *.log
-config.json
-
+conf.json
 test.py
