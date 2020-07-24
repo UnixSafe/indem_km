@@ -96,7 +96,8 @@ def addObj(obj,element_str,driver):
     obj.send_keys(" ")
     obj.send_keys(Keys.CONTROL,'a')
     obj.send_keys(element_str)
-    #driver.find_element_by_class_name("item item-selected").click()
+    time.sleep(1)
+   # driver.find_element_by_class_name("item item-selected").click()
     obj.send_keys(Keys.TAB)
 
 def stringToBase64(s):
