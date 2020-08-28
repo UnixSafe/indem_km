@@ -131,6 +131,7 @@ def processing(driver):
 def autofill(driver,dateIndem_str,tr):
       #Date
     info("add date")
+    time.sleep(1)
     dateInput = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr[8]/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr["+str(tr)+"]/td[1]/input")
     addDate(dateInput,dateIndem_str)
     time.sleep(0.5)
